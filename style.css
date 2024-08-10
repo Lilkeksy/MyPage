@@ -260,3 +260,10 @@ h3{
 .manipulate{
     width: 20vw;
 }
+
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hides the navigation links on mobile devices */
+    }
+}
