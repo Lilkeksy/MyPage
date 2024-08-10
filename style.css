@@ -112,7 +112,7 @@ html, body {
 }
 
 .greeting {
-    padding: 20px;
+    padding: 30px;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -363,6 +363,18 @@ h3{
 @media (max-width: 768px) {
     .nav-links {
         display: none; /* Hides the navigation links on mobile devices */
+    }
+    .Introduction {
+        display: flex;
+        flex-direction: column;
+    }
+    h1 {
+        font-size: 11.5vw;
+    }
+    .grad-picture {
+        width: 100%;
+        max-width: 300px; /* Adjust as needed */
+        height: auto;
     }
     .quote{
         font-size: 1.74vw;
