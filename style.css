@@ -1,0 +1,262 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: #161616;
+    width: 100%;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-links nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding-right: 35px;
+}
+
+.nav-links nav ul li {
+    padding: 10px;
+}
+
+.nav-links nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 2vh;
+}
+
+.nav-links nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    padding-left: 20px;
+}
+
+.menu-button {
+    padding-right: 20px;
+}
+
+.Introduction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(270deg, #75eaff, #ffadad);
+    animation: gradientAnimation 10s ease infinite;
+    background-size: 400% 400%;
+    padding: 20px;
+    height: auto;
+    transition: all 0.3s;
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.greeting {
+
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    background-color: white;
+}
+
+.grad-picture-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grad-picture {
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    height: auto;
+}
+
+h1 {
+    font-family: "Exo 2", sans-serif;
+    font-style: normal;
+    font-size: 9vw;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.quote {
+    font-size: 1.25vw;
+    margin-left: 20px;
+    margin-top: 10px; /* Add a bit of margin for spacing */
+}
+
+
+/*..........................*/
+
+.section {
+    display: flex;
+    color: white;
+    font-size: 2em;
+    position: relative;
+    background-color: #fc0f0f;
+    flex-direction: column;
+}
+.first{
+    min-width: 40px;
+}
+.whoAmI {
+    background-color: #161616;
+}
+h2{
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 5vw;
+    padding-left: 25px;
+
+}
+.name{
+    font-size: 10vw;
+    text-indent: 20;
+}
+
+/* Existing styles remain unchanged */
+
+#scrollText {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 5vw;
+    padding-left: 25px;
+    position: relative;
+    transition: all 0.2s ease-out;
+    color: white;
+}
+
+#scrollText.reveal {
+    color: transparent;
+}
+
+#scrollText.reveal::after {
+    content: "Nice to meet you";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 10vw;
+    transform: translateX(15vw);
+    transform: translateY(7vw);
+    color: orange;
+    white-space: nowrap;
+}
+
+.line1{
+    height: 3vw;
+    background: linear-gradient(to left, #ff7e5f, #feb47b);
+    display: flex;
+}
+/*..........................*/
+
+.alpha{
+    height: 1250pt;
+    background: linear-gradient(270deg, #75eaff, #ffadad);
+    background-color: #fc0f0f;
+    flex-direction: column;
+}
+.subsection{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    align-content: center;
+    min-height: 60vh;
+    color: azure;
+}
+.wma-p{
+    transition-delay: 500ms;
+}
+h3{
+    font-family: "Playfair Display SC", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 9vw;
+}
+.top{
+    /* padding-left: 30vw; */
+    margin-top: 2.5vw;
+    margin-left: 40vw;
+    background-color: rgb(59, 54, 54);
+    font-size: clamp(2.7rem, 8.5vw, 8rem);
+    text-align: center;
+}
+.summary{
+    font-family: "Anton SC", sans-serif;
+    font-weight: 00;
+    font-style: normal;
+    font-size: clamp(1.7rem, 3vw, 6rem);
+    letter-spacing: 1px;
+    padding-left:20px;
+    padding-right: 20px;
+}
+.caps{
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: black;
+}
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+    transition-delay: 0.3s; /* Add delay here */
+}
+.show{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition-delay: 0.3s; /* No delay when in view */
+}
+
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
+}
+
+.logos{
+    display: inline-flex;
+
+}
+.logo:nth-child(1){
+    padding-left: 0%;
+}
+.logo:nth-child(2){
+    transition-delay: 200ms;
+}
+.logo:nth-child(3){
+    transition-delay: 300ms;
+}
+.logo:nth-child(4){
+    transition-delay: 400ms;
+}
+
+.manipulate{
+    width: 20vw;
+}
