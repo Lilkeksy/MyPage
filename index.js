@@ -1,190 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
+var wrapperMenu = document.querySelector('.wrapper-menu');
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MONARCH </title>
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css"/>
+wrapperMenu.addEventListener('click', function(){
+  wrapperMenu.classList.toggle('open');  
+})
+//..................................
+window.addEventListener('scroll', function() {
+    var scrollText = document.getElementById('scrollText');
+    var scrollPosition = scrollText.getBoundingClientRect().top;
+    var screenPosition = window.innerHeight / 70;
 
+    if (scrollPosition < screenPosition) {
+        scrollText.classList.add('reveal');
+    } else {
+        scrollText.classList.remove('reveal');
+    }
+});
+//..................................
+const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
 
-    <!--Google font links-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+accordionItemHeaders.forEach(accordionItemHeader => {
+  accordionItemHeader.addEventListener("click", event => {
+    
+    // Uncomment in case you only want to allow for the display of only one collapsed item at a time!
+    
+    const currentlyActiveAccordionItemHeader = document.querySelector(".accordion-item-header.active");
+    if(currentlyActiveAccordionItemHeader && currentlyActiveAccordionItemHeader!==accordionItemHeader) {
+      currentlyActiveAccordionItemHeader.classList.toggle("active");
+      currentlyActiveAccordionItemHeader.nextElementSibling.style.maxHeight = 0;
+    }
+//...
+//..................................
+    accordionItemHeader.classList.toggle("active");
+    const accordionItemBody = accordionItemHeader.nextElementSibling;
+    if(accordionItemHeader.classList.contains("active")) {
+      accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+    }
+    else {
+      accordionItemBody.style.maxHeight = 0;
+    }
+    
+  });
+});
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kalnia+Glaze:wght@100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting){
+            entry.target.classList.add('show');
+        } else {
+            // entry.target.classList.remove('show');
+        }
+    });
+});
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Bebas+Neue&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kalnia+Glaze:wght@100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-</head>
-<body>
-    <section class="header 1">
-        <header class="navigation-bar">
-            <div class ="logo">
-                <a href =""><img src = "./Assets/pictures and logos/Logo.png" height ="50px" alt="logo"></a>
-            </div>
-            <div class="nav-links">
-                <nav>
-                    <ul>
-                        <li><a href ="">Home</a></li>
-                        <li><a href ="">About</a></li>
-                        <li><a href ="">Services</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="wrapper-menu">
-                <div class="line half start"></div>
-                <div class="line"></div>
-                <div class="line half end"></div>
-              </div>
-        </header>
-        
-    </section>
-    <div class="Introduction">
-        <div class = "greeting">
-            <h1>Me Defined!</h1>
-            <p class="quote"><em>- You Do Not Plan So That You Can Improvise.</em></p>
-        </div>
-        <div>
-            <img src ="./Assets/pictures and logos/Grad_Student.png" alt="Grad_Student" class="grad-picture">
-        </div>
-        
-      </div>
-<!-- ........................ -->
-      <div class="section">
-        <div class="whoAmI">
-        <h2 id="scrollText" class="hover-fill" data-txthover="Nice to meet you">MY NAME IS <span class="name"><br>KELVIN MASETTI </br></span></h2>
-    </div>
-    <div class="line1"></div>
-    </div>
-<!-- ........................ -->
-<section class="alpha">
-    <div class="subsection hidden first">
-        <h3 class="top">Who Am I?</h3>
-        <div class="accordion">
-            <div class="accordion-item">
-              <div class="accordion-item-header">
-                Bio
-              </div>
-              <div class="accordion-item-body">
-                <div class="accordion-item-body-content">
-                    <p><span class="caps">Well,</span> My story is set in the warm bosom of Nigeria, where the sun is traced in fiery golds and the air with the buzz of life. Nigerian soil, my mother’s heritage runs deep into the fertile land of my fathers, with Italian twinge of viniculture and ruins in my blood. I was raised in the world where laughter would float as a melody and the love of family was blended with the richness of every culture as I embraced every stage of my childhood as my shelter and my springboard. I enthusiastically embraced life, emotions, relationships, and dreams since childhood, when each day was bright and full of sunlight, and life seemed like an endless sea that stretched as far as the horizon.</p>
-                    <p>Yet, amid the many wonders of childhood, there was one thing that captivated me above all else—a computer. For me it was a gate to some other dimension, to the unknown world, where all potential opportunities are concealed by the light of an LED monitor. Whereas any other child of my age might dream of climbing mountains or of diving into an abyss of the ocean, I was enthralled by the hum of a processor, the click of keys, and the enigmatic code that pulsed like a heartbeat within the machine. This wasn’t curiosity; this was a feeling far more instinctive, far more elemental. I would spend hours and hours perhaps just looking at a device, seeking its interiorities as one would try to decipher the core of a flower.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-item-header">
-                Education
-              </div>
-              <div class="accordion-item-body">
-                <div class="accordion-item-body-content">
-                    <p> <span class="caps">As</span> the years passed, my fascination in technology continued to rise. My educational experience started with Hillcrest School in Jos, where my burgeoning passion for computers was nurtured, or at least the place where this love was allowed to grow. To me, Hillcrest was so much more than just a school; it was my shaping of interests where my passions grew into the vision of my career. That learning experience was filled with discoveries and I was the eager student sponging up information in the classrooms. Every lesson was an invitation, an appeal to explore the layers of digital environment and going beyond the surface to see what happened behind the scenes. This is where I discovered my life’s purpose, working under the light of the monitors.</p>
-                    <p>However, learning is not easy without a hitch especially when comes to the understanding. It was one fine day that chaos knocked on my door and held my computer resources hostage through ransomware. This sly virus put my precious memories in a cage, It encrypted my photos, docs, videos and other valuable data files. Often, the feeling of the fear could have Sasquatched me, but before I could deal with this, I found myself in the grasp of a rabid curiosity. It was such a small thing and it was incredibly powerful and unseen. How did it get into my system and more crucial, how did I extricate myself from the virus’ havoc? This was not a mere a step backwards – this step was a switch – it turned me into a fiery enthusiast who wished to know more about the programming languages. In the past years, I have waded through heaps of bugs, wrestled code, and deciphered what appeared to be almost enigmas.</p>
-                    <p>This passion grew as I moved through high school and gained more experience with technology. Sophisticated courses in Computer Science were my sandbox, the area where I could experiment with my learnings. While, however, the curriculum became more and more complicated, it still did not satiate me with knowledge. The internet was my guide showing me through the maze of tutorials, coding problem and articles on the most recent online developments. Every single piece of knowledge obtained was a ray of light in the pitch-black forest of the unknown that I was navigating on my own.</p>
-                    <p>Today, I am on the brink of a new paradigm, majoring in Computer Science with a specialty in Artificial Intelligence—a subject that leaves me with a feeling of magic, born for such a specialty where even the boundaries of the feasible and infeasible cannot be drawn. AI is the final frontier for technology, or in the extravagant words, the Everest of it, with the capability of emulating human thinking and transforming entire sectors of the economy. It can diagnose diseases at its embryonic stages, it can map out and design educations systems that are custom made to fit individuals, and it can, over time, address some of the greatest mysteries that have ever faced humanity. The prospects are as broad as ocean, and I am eager to swim deeper and to investigate its undercurrents and add to the on-going advancement of this field.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-item-header">
-                Skills
-              </div>
-              <div class="accordion-item-body">
-                <div class="accordion-item-body-content">
-                    <p><span class="caps">But</span> my journey is not merely associated with AI. From here, I have developed a broad range of proficiencies encompassing website design, cloud computing, and coding. I have created websites and not just to have samples for people to see, but to have an avenue where concepts come alive, where code painting happens, where innovation and functionality converge. I am also still studying for the AWS Certified Cloud Practitioner and learning from a web development bootcamp so that the knowledge I apply is not purely conceptual but realistic.</p>
-                    <ul style="padding-left: 1rem;">
-                        <li>Web-designer</li>
-                        <li>Cloud computing/managing</li>
-                        <li>Programming</li>
-                      </ul>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-item-header">
-                Hobbies
-              </div>
-              <div class="accordion-item-body">
-                <div class="accordion-item-body-content">
-                  <p><span class="caps">Outside</span> the high-tech zone of my existence, I have hobbies that help me use my imagination to the full and strengthen my mind. Thus, knowledge is a source of happiness for me, and I am always eager to obtain fresh information and explore the extensions of my existing knowledge. Programming is interesting because there are always new problems to solve and difficulties to overcome – and this makes it enjoyable as well as a way of improving oneself. But then again, I’m human and thus I wear.  In such times I seek solace in nature, whether traversing the ground on foot or upon my two-wheeled steed, as I bathe in the warmth of the sun and the caress of the wind I am renewed. When the going gets tough, my spirit finds respite in this sanctuary. Or perhaps as a treat, games – it is the only place where strategy, quick hands and creativity meet the most interesting challenges. Website creation also fits in the concept of a hobby that one plays, and there is no end to the stars in the sky.</p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <div class="accordion-item-header">
-                Goals
-              </div>
-              <div class="accordion-item-body">
-                <div class="accordion-item-body-content">
-                    <p><span class="caps">Thus,</span> the following is my vision for the future. It is my desire to be associated with a firm that is in the frontier of AI in spearheading advanced innovation that would revolutionize the capabilities of the technology. My philosophy is simple but powerful: “If you perpetuate the dreams of the past, you stifle the of the future. ” This is why I believe that no matter how hard the work is, no matter how elusive the goal, no matter how distant my dream, the willpower, diligence, and faith will help me succeed with flying colors and make this world a little better.</p>
-                    <!-- <ul style="padding-left: 1rem;">
-                        <li>HTML, CSS, JavaScript</li>
-                        <li>Frameworks (CSS and JavaScript frameworks)</li>
-                        <li>Responsive Design</li>
-                        <li>Version Control/Git</li>
-                        <li>Testing/Debugging</li>
-                        <li>Browser Developer Tools</li>
-                        <li>Web Performance</li>
-                        <li>SEO (Search Engine Optimization)</li>
-                                 <li>CSS Preprocessing</li>
-                        <li>Command Line</li>
-                        <li>CMS (Content Management System)</li>
-                      </ul> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        
-        <!-- <p class = "summary">Growing up, the child in me was that one who was unable to resist any gadget that was within my reach. 
-            There was no topic related to computers that I did not want to explore and learn about from its basic fundamental functionality to diverse applications. 
-            It was there that I spent countless hours with their features, solving problems, and just thinking about the great potential of such a tool. 
-            Growing up, technology has been an area of interest and as the years advanced, the interest has been taken to another level.</p> -->
-    </div>
-
-    <p class = "summary"></p>
-    <p class = "summary"></p>
-    <p class = "summary"></p>
-    <p class = "summary"></p>
-    <div class="subsection hidden">
-        <h3>What do I do?</h3>
-        <p>I Do a lot of things!</p>
-        <p class = "summary"><span class="caps">Well</span> I am nothing more than your humble aspiring computer scientist. 
-            I chose computer science because it is A subject where in its presence, time fades. 
-            A fascinating thing as it relies on a person’s logical and analytical ability. Learning about computers,
-            Their internal mechanisms, multifaceted approaches to problem-solving, and continuous evolution over the years are nothing short of awe-inspiring.</p>
-        <div class = logos>
-            <div class="logo hidden">
-                <img class= "manipulate" src="https://api.dicebear.com/9.x/glass/svg?seed=Aneka" alt="smthn">
-            </div>
-            <div class="logo hidden hidden-image">
-                <img class= "manipulate" src="https://api.dicebear.com/9.x/glass/svg?backgroundType=gradientLinear,solid"  alt="smthn">
-            </div>
-            <div class="logo hidden">
-                <img class= "manipulate" src= "https://api.dicebear.com/9.x/glass/svg?seed=Felix" alt="smthn">
-            </div>
-            <div class="logo hidden">
-                <img class= "manipulate" src="https://api.dicebear.com/9.x/glass/svg?backgroundRotation=0,360" alt="smthn">
-            </div>
-    </div>
-        </div>
-            
-    <div class="subsection hidden">
-        <h3>How can I help?</h3>
-    </div>
-</section>
-<!-- ........................ -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./index.js" charset="utf-8"></script>
-</body>
-<footer> </footer>
+const hiddenElements = document.querySelectorAll('.hidden')
+hiddenElements.forEach((el) => observer.observe(el));
