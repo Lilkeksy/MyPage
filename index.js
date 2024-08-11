@@ -7,7 +7,7 @@ wrapperMenu.addEventListener('click', function(){
 window.addEventListener('scroll', function() {
     var scrollText = document.getElementById('scrollText');
     var scrollPosition = scrollText.getBoundingClientRect().top;
-    var screenPosition = window.innerHeight / 70;
+    var screenPosition = window.innerHeight / 50;
 
     if (scrollPosition < screenPosition) {
         scrollText.classList.add('reveal');
