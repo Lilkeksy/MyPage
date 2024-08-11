@@ -311,6 +311,10 @@ h3{
       font-size: 14px;
     }
   }
+  .h3middle{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
     .summary{
     font-family: "Anton SC", sans-serif;
     font-weight: 00;
