@@ -98,8 +98,8 @@ html, body {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(270deg, #75eaff, #ffadad);
-    animation: gradientAnimation 10s ease infinite;
+    background: linear-gradient(270deg, #a3eaf7, #ffadad);
+    animation: gradientAnimation 30s ease infinite;
     background-size: 400% 400%;
     padding: 20px;
     height: auto;
@@ -125,6 +125,7 @@ html, body {
     flex-direction: column;
     justify-content: center; /* Center content vertically */
     background-color: white;
+    border-radius: 10%;
 }
 
 .grad-picture-container {
@@ -154,7 +155,7 @@ h1 {
     font-size: 1.25vw;
     margin-left: 20px;
     margin-top: 10px; /* Add a bit of margin for spacing */
-    text-align: right;
+    text-align: center;
 }
 
 /*..........................*/
@@ -235,8 +236,9 @@ h2{
 .subsection{
     display: flex;
     flex-direction: column;
-    place-items: center;
+    align-items: flex-end; /* Aligns children to the right */
     align-content: center;
+    place-items: center;
     min-height: 60vh;
     color: azure;
 }
@@ -364,7 +366,54 @@ h3{
 .manipulate{
     width: 20vw;
 }
+.bubbles{
+    padding: 10px;
+    border-radius: 50%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: auto;
+    height: 20px;
+    height: 20px;
+    background: linear-gradient(to left, #feb47b, #ff7e5f);
+}
+.one{
+    width: 60%;
+    height: 20px;
+}
+.two{
+    width: 30%;
+    margin-top: 10px;
+}
+.three{
+    width: 15%;
+    margin-top: 10px;
+}
+.bubble{
+    padding: 10px;
+    border-radius: 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-left: auto;
+    height: 20px;
+    background: linear-gradient(to left, #ff7e5f, #feb47b);
+}
 
+.four{
+    margin-top:20px;
+    width: 60%;
+}
+.five{
+    width: 30%;
+    margin-top: 10px;
+}
+.six{
+    width: 15%;
+    margin-top: 10px;
+}
+.lasth3{
+    margin-right: auto;
+    padding-left: 20px;
+}
 .footer{
     display: flex;
     flex-direction: column;
@@ -429,6 +478,7 @@ h3{
     }
     .logo-img{
         height: 30px;
+        padding-left: 15px;
     }
     .wrapper-menu {
         height: 20px
